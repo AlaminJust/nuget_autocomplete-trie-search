@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32611.2
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "autocomplete-trie-search", "autocomplete-trie-search\autocomplete-trie-search.csproj", "{50603DCA-DBA8-4460-9C2F-38252B55ABB4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "autocomplete-trie-search_unit_test", "autocomplete-trie-search_unit_test\autocomplete-trie-search_unit_test.csproj", "{3A8F720F-E4F1-41DD-A894-8373074CF894}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{50603DCA-DBA8-4460-9C2F-38252B55ABB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50603DCA-DBA8-4460-9C2F-38252B55ABB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50603DCA-DBA8-4460-9C2F-38252B55ABB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50603DCA-DBA8-4460-9C2F-38252B55ABB4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A8F720F-E4F1-41DD-A894-8373074CF894}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A8F720F-E4F1-41DD-A894-8373074CF894}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A8F720F-E4F1-41DD-A894-8373074CF894}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A8F720F-E4F1-41DD-A894-8373074CF894}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0633C6F1-56F9-440E-BDC7-E4C24EA570F2}
+	EndGlobalSection
+EndGlobal
