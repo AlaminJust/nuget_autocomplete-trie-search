@@ -2,7 +2,7 @@
 
 namespace autocomplete_trie_search
 {
-    public class AutoCompleteTrieSearch
+    public class AutoCompleteTrieSearch: IAutoCompleteTrieSearch
     {
         private const int DEFAULT_MISMATCH_ALLOW = 3;
         private const int DEFAULT_MAX_SUGGESION = 10;
@@ -19,22 +19,22 @@ namespace autocomplete_trie_search
 
         public AutoCompleteTrieSearch()
         {
-            _valueByKey = new Dictionary<string, object>();
-            _root = new TrieNode();
-            _nodeCount = 0;
-            _maxSuggestion = DEFAULT_MAX_SUGGESION;
-            _ignoreCase = DEFAULT_IGNORE_CASE;
-            _allowedMismatchCount = DEFAULT_MISMATCH_ALLOW;
+            ValueByKey = new Dictionary<string, object>();
+            Root = new TrieNode();
+            NodeCount = 0;
+            MaxSuggestion = DEFAULT_MAX_SUGGESION;
+            IgnoreCase = DEFAULT_IGNORE_CASE;
+            AllowedMismatchCount = DEFAULT_MISMATCH_ALLOW;
         }
 
         public AutoCompleteTrieSearch(AutoCompleteTrieSearchOptions options)
         {
-            _valueByKey = new Dictionary<string, object>();
-            _root = new TrieNode();
-            _nodeCount = 0;
-            _maxSuggestion = options?.MaxSuggestion ?? DEFAULT_MAX_SUGGESION;
-            _ignoreCase = options?.IgnoreCase ?? DEFAULT_IGNORE_CASE;
-            _allowedMismatchCount = options?.AllowedMismatchCount ?? DEFAULT_MISMATCH_ALLOW;
+            ValueByKey = new Dictionary<string, object>();
+            Root = new TrieNode();
+            NodeCount = 0;
+            MaxSuggestion = options?.MaxSuggestion ?? DEFAULT_MAX_SUGGESION;
+            IgnoreCase = options?.IgnoreCase ?? DEFAULT_IGNORE_CASE;
+            AllowedMismatchCount = options?.AllowedMismatchCount ?? DEFAULT_MISMATCH_ALLOW;
         }
 
         public void UpdateOptions(AutoCompleteTrieSearchOptions options)
@@ -80,11 +80,22 @@ namespace autocomplete_trie_search
             get => _allowedMismatchCount;
         }
 
-        public bool IgnoreCase => _ignoreCase;
-
-        private TrieNode Root
+        public bool IgnoreCase
         {
-            set => _root = value;
+            get { return _ignoreCase; }
+            private set { _ignoreCase = value; }
+        }
+
+        public TrieNode Root
+        {
+            get
+            {
+                return _root;
+            }
+            private set
+            {
+                _root = value;
+            }
         }
 
         public TrieNode GetRoot()
@@ -357,7 +368,7 @@ namespace autocomplete_trie_search
                 {
                     Rank ranke = new Rank()
                     {
-                        Weight = rootNode.OwnRank.Weight,
+                        Weight = MAX_WEIGHT,
                         Id = rootNode.NodeValue.Id
                     };
 

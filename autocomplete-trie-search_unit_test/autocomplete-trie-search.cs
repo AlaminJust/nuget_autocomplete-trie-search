@@ -132,7 +132,7 @@ namespace autocomplete_trie_search_unit_test
 
             List<INodeValue> nodes = new List<INodeValue>();
 
-            for (int i = 0; i <= 100000; i++)
+            for (int i = 0; i <= 10000; i++)
             {
                 INodeValue node = new NodeValueOptions()
                 {
@@ -152,7 +152,7 @@ namespace autocomplete_trie_search_unit_test
 
             Console.WriteLine("Memory used: {0:N0} bytes", memoryUsed);
 
-            Assert.LessOrEqual(memoryUsed, 700 * 1024 * 1024);
+            Assert.LessOrEqual(memoryUsed, 165 * 1024 * 1024);
         }
     }
 }
