@@ -13,8 +13,10 @@
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Authors>AL AMIN</Authors>
     <Description>Autocomplete trie search is a powerful technique used in information retrieval systems to provide fast and accurate suggestions to users as they type in their queries. This technique uses a trie data structure to store a set of strings, enabling quick and efficient prefix-based search. As the user types in their query, the autocomplete trie search algorithm traverses the trie to find all possible completions of the prefix, returning a list of suggestions ranked by relevance. This technique is commonly used in search engines, text editors, and other applications that require fast and accurate query completion. With its ability to provide real-time suggestions, autocomplete trie search enhances the user experience, making it easier for users to find the information they need quickly and efficiently.</Description>
-    <AssemblyVersion>1.0.1</AssemblyVersion>
-    <Version>1.0.1</Version>
+    <AssemblyVersion>1.0.5</AssemblyVersion>
+    <Version>1.0.5</Version>
+    <Nullable>disable</Nullable>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

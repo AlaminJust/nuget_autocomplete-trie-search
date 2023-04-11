@@ -62,11 +62,25 @@
         /// </summary>
         IRank OwnRank { get; set; }
     }
-    
+
+    /// <summary>
+    /// Defines options for performing an autocomplete search using a trie data structure.
+    /// </summary>
     public interface AutoCompleteTrieSearchOptions
     {
+        /// <summary>
+        /// Gets or sets the maximum number of suggestions that can be returned from the search.
+        /// </summary>
         public int? MaxSuggestion { get; set; }
+
+        /// <summary>
+        /// Gets or sets the number of character mismatches that are allowed between the user input and the search results.
+        /// </summary>
         public int? AllowedMismatchCount { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the search should be case insensitive.
+        /// </summary>
         public bool? IgnoreCase { get; set; }
     }
 
