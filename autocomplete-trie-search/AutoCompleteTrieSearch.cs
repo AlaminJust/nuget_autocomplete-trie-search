@@ -427,33 +427,51 @@ namespace autocomplete_trie_search
         {
             var mergedList = new List<IRank>();
 
-            if(list1 == null)
+            if (list1 == null)
             {
                 list1 = new List<IRank>();
             }
-            if(list2 == null)
+            if (list2 == null)
             {
                 list2 = new List<IRank>();
             }
-            
+
             var i = 0; // Pointer for list1
             var j = 0; // Pointer for list2
 
             // Merge the two lists until we reach the maximum number of suggestions
             while (mergedList.Count < this.MaxSuggestion && i < list1.Count() && j < list2.Count())
             {
-                // Compare the rank of the elements at the current position of the pointers
-                if (list1[i].Id == list2[j].Id)
+                // Skip ignored nodes
+                if (ignoreNode != null && list1[i].Id == ignoreNode.Id)
                 {
                     i++;
+                    continue;
                 }
-                else if (ignoreNode != null && list1[i].Id == ignoreNode.Id)
-                {
-                    i++;
-                }
-                else if (ignoreNode != null && list2[j].Id == ignoreNode.Id)
+                if (ignoreNode != null && list2[j].Id == ignoreNode.Id)
                 {
                     j++;
+                    continue;
+                }
+
+                // Check if either item already exists in the merged list
+                bool list1ItemExists = mergedList.Any(x => x.Id == list1[i].Id);
+                bool list2ItemExists = mergedList.Any(x => x.Id == list2[j].Id);
+
+                if (list1ItemExists && list2ItemExists)
+                {
+                    i++;
+                    j++;
+                }
+                else if (list1ItemExists)
+                {
+                    mergedList.Add(list2[j]);
+                    j++;
+                }
+                else if (list2ItemExists)
+                {
+                    mergedList.Add(list1[i]);
+                    i++;
                 }
                 else if (list1[i].Weight >= list2[j].Weight)
                 {
@@ -470,7 +488,7 @@ namespace autocomplete_trie_search
             // Add the remaining elements from list1, if any
             while (mergedList.Count < this.MaxSuggestion && i < list1.Count())
             {
-                if (ignoreNode?.Id == list1[i].Id)
+                if (ignoreNode?.Id == list1[i].Id || mergedList.Any(x => x.Id == list1[i].Id))
                 {
                     i++;
                     continue;
@@ -483,7 +501,7 @@ namespace autocomplete_trie_search
             // Add the remaining elements from list2, if any
             while (mergedList.Count < this.MaxSuggestion && j < list2.Count())
             {
-                if (list2[j].Id == ignoreNode?.Id)
+                if (list2[j].Id == ignoreNode?.Id || mergedList.Any(x => x.Id == list2[j].Id))
                 {
                     j++;
                     continue;
